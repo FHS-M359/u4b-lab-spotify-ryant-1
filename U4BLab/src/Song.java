@@ -17,6 +17,6 @@ public class Song {
     }
 
     public String toString() {
-        return name + ", " + band + ", " + album + ", " + songLength + ", " + year + ", " + genre;
+        return String.format("%-30s %-20s %-30s %-12d %-15s %-12d", name, band, album, year, genre, songLength);
     }
 }

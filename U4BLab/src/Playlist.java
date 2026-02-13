@@ -35,4 +35,33 @@ public  class Playlist {
         System.out.println("7. Quit");
         System.out.println("Input (1-7)");
     }
+
+    public void sendInput(int input) {
+        if(input == 1) {
+
+        }
+        else if(input == 2) {
+
+        }
+        else if(input == 3) {
+
+        }
+        else if(input == 4) {
+
+        }
+        else if(input == 5) {
+
+        }
+        else if(input == 6) {
+            displaySongs(songs);
+        }
+    }
+
+    public void displaySongs(ArrayList<Song> tempSongs) {
+        System.out.println(String.format("%-30s %-20s %-30s %-12s %-15s %-12s", "Song Name", "Band Name", "Album Name", "Year", "Genre", "Song Length"));
+        System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+        for(Song i: tempSongs) {
+            System.out.println(i);
+        }
+    }
 }
