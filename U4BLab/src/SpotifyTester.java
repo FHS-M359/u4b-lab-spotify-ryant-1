@@ -22,7 +22,7 @@ public class SpotifyTester {
                 }
                 else {
                     System.out.println("You've selected " + input);
-                    p1.sendInput(input);
+                    p1.sendInput(input, scan);
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid Input: Input an integer");

@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public  class Playlist {
@@ -36,7 +37,7 @@ public  class Playlist {
         System.out.println("Input (1-7)");
     }
 
-    public void sendInput(int input) {
+    public void sendInput(int input, Scanner scan) {
         if(input == 1) {
 
         }
@@ -44,16 +45,69 @@ public  class Playlist {
 
         }
         else if(input == 3) {
-
+            sortYear(songs);
         }
         else if(input == 4) {
-
+            sortYearReversed(songs);
         }
         else if(input == 5) {
-
+            searchGenre(scan);
         }
         else if(input == 6) {
             displaySongs(songs);
+        }
+    }
+
+    public void sortAlphabetic(ArrayList<Song> tempSongs) {
+        boolean sorted = false;
+        while(!sorted) {
+            for(int i = 0; i < tempSongs.size(); i++) {
+                for(int j = 0; j < tempSongs.size(); j++) {
+
+                }
+            }
+        }
+    }
+
+    public void sortYear(ArrayList<Song> tempSongs) {
+
+    }
+
+    public void sortYearReversed(ArrayList<Song> tempSongs) {
+
+    }
+
+    public void searchGenre(Scanner scan) {
+        boolean isValid = false;
+        boolean isPossible = false;
+        String input = "";
+        while(!isValid) {
+            try {
+                System.out.println("What genre do you want to search for?");
+                input = scan.nextLine();
+                if(input.length() == 0) {
+                    System.out.println("Invalid Input: Nothing was inputted.");
+                }
+                else {
+                    for(int i = 0; i < songs.size(); i++) {
+                        if(songs.get(i).getGenre().equalsIgnoreCase(input)) {
+                            isPossible = true;
+                        }
+                    }
+                    if(isPossible) {
+                        ArrayList<Song> temp = new ArrayList<Song>();
+                        for(int i = 0; i < songs.size(); i++) {
+                            if(songs.get(i).getGenre().equalsIgnoreCase(input)) {
+                                temp.add(songs.get(i));
+                                displaySongs(temp);
+                            }
+                        }
+                    }
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input: Please input a valid string");
+            }
         }
     }
 

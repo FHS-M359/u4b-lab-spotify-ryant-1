@@ -19,4 +19,16 @@ public class Song {
     public String toString() {
         return String.format("%-30s %-20s %-30s %-12d %-15s %-12d", name, band, album, year, genre, songLength);
     }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 }
