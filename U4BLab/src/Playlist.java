@@ -134,9 +134,9 @@ public  class Playlist {
                         for(int i = 0; i < songs.size(); i++) {
                             if(songs.get(i).getGenre().equalsIgnoreCase(input)) {
                                 temp.add(songs.get(i));
-                                displaySongs(temp);
                             }
                         }
+                        displaySongs(temp);
                     }
                 }
 
