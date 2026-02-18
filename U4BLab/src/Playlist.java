@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import java.util.Comparator;
+
 public  class Playlist {
     //Name, Band, Album, Year, Genre
     private ArrayList<Song> songs = new ArrayList<Song>();
@@ -39,10 +41,10 @@ public  class Playlist {
 
     public void sendInput(int input, Scanner scan) {
         if(input == 1) {
-
+            sortAlphabetic(songs);
         }
         else if(input == 2) {
-
+            sortAlphabeticReversed(songs);
         }
         else if(input == 3) {
             sortYear(songs);
@@ -59,22 +61,55 @@ public  class Playlist {
     }
 
     public void sortAlphabetic(ArrayList<Song> tempSongs) {
-        boolean sorted = false;
-        while(!sorted) {
-            for(int i = 0; i < tempSongs.size(); i++) {
-                for(int j = 0; j < tempSongs.size(); j++) {
-
+        for(int i = 0; i < tempSongs.size() - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j < tempSongs.size(); j++) {
+                if(tempSongs.get(minIndex).getName().toLowerCase().compareTo(tempSongs.get(j).getName().toLowerCase()) > 0) {
+                    minIndex = j;
                 }
             }
+            tempSongs.set(minIndex, tempSongs.set(i, tempSongs.get(minIndex)));
         }
+        displaySongs(tempSongs);
+    }
+
+    public void sortAlphabeticReversed(ArrayList<Song> tempSongs) {
+        for(int i = 0; i < tempSongs.size() - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j < tempSongs.size(); j++) {
+                if(tempSongs.get(minIndex).getName().toLowerCase().compareTo(tempSongs.get(j).getName().toLowerCase()) < 0) {
+                    minIndex = j;
+                }
+            }
+            tempSongs.set(minIndex, tempSongs.set(i, tempSongs.get(minIndex)));
+        }
+        displaySongs(tempSongs);
     }
 
     public void sortYear(ArrayList<Song> tempSongs) {
-
+        for(int i = 0; i < tempSongs.size() - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j < tempSongs.size(); j++) {
+                if(tempSongs.get(minIndex).getYear() > tempSongs.get(j).getYear()) {
+                    minIndex = j;
+                }
+            }
+            tempSongs.set(minIndex, tempSongs.set(i, tempSongs.get(minIndex)));
+        }
+        displaySongs(tempSongs);
     }
 
     public void sortYearReversed(ArrayList<Song> tempSongs) {
-
+        for(int i = 0; i < tempSongs.size() - 1; i++) {
+            int minIndex = i;
+            for(int j = i + 1; j < tempSongs.size(); j++) {
+                if(tempSongs.get(minIndex).getYear() < tempSongs.get(j).getYear()) {
+                    minIndex = j;
+                }
+            }
+            tempSongs.set(minIndex, tempSongs.set(i, tempSongs.get(minIndex)));
+        }
+        displaySongs(tempSongs);
     }
 
     public void searchGenre(Scanner scan) {
