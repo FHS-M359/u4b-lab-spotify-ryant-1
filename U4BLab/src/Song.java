@@ -28,6 +28,10 @@ public class Song {
         return year;
     }
 
+    public String getBand() {
+        return band;
+    }
+
     public String getName() {
         return name;
     }

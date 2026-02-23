@@ -64,7 +64,7 @@ public  class Playlist {
         for(int i = 0; i < tempSongs.size() - 1; i++) {
             int minIndex = i;
             for(int j = i + 1; j < tempSongs.size(); j++) {
-                if(tempSongs.get(minIndex).getName().toLowerCase().compareTo(tempSongs.get(j).getName().toLowerCase()) > 0) {
+                if(tempSongs.get(minIndex).getBand().toLowerCase().compareTo(tempSongs.get(j).getBand().toLowerCase()) > 0) {
                     minIndex = j;
                 }
             }
@@ -77,7 +77,7 @@ public  class Playlist {
         for(int i = 0; i < tempSongs.size() - 1; i++) {
             int minIndex = i;
             for(int j = i + 1; j < tempSongs.size(); j++) {
-                if(tempSongs.get(minIndex).getName().toLowerCase().compareTo(tempSongs.get(j).getName().toLowerCase()) < 0) {
+                if(tempSongs.get(minIndex).getBand().toLowerCase().compareTo(tempSongs.get(j).getBand().toLowerCase()) < 0) {
                     minIndex = j;
                 }
             }
@@ -118,10 +118,13 @@ public  class Playlist {
         String input = "";
         while(!isValid) {
             try {
-                System.out.println("What genre do you want to search for?");
+                System.out.println("What genre do you want to search for? Input 'quit' if you want to return to main menu.");
                 input = scan.nextLine();
                 if(input.length() == 0) {
                     System.out.println("Invalid Input: Nothing was inputted.");
+                }
+                else if (input.equalsIgnoreCase("quit")) {
+                    isValid = true;
                 }
                 else {
                     for(int i = 0; i < songs.size(); i++) {
