@@ -32,6 +32,14 @@ public class Song {
         return band;
     }
 
+    public String getAlbum() {
+        return album;
+    }
+
+    public int getSongLength() {
+        return songLength;
+    }
+
     public String getName() {
         return name;
     }

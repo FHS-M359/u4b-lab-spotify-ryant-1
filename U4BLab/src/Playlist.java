@@ -86,30 +86,38 @@ public  class Playlist {
         displaySongs(tempSongs);
     }
 
-    public void sortYear(ArrayList<Song> tempSongs) {
-        for(int i = 0; i < tempSongs.size() - 1; i++) {
-            int minIndex = i;
-            for(int j = i + 1; j < tempSongs.size(); j++) {
-                if(tempSongs.get(minIndex).getYear() > tempSongs.get(j).getYear()) {
-                    minIndex = j;
-                }
+    public void sortYear(ArrayList<Song> list) {
+        for(int i = 1; i < list.size(); i++) {
+            //Saves element value so it can be placed back after shifting.
+            int tempValue = list.get(i).getYear();
+            Song tempSong = new Song(list.get(i).getName(), list.get(i).getBand(), list.get(i).getAlbum(),
+                    list.get(i).getYear(), list.get(i).getGenre(), list.get(i).getSongLength());
+            int position = i;
+            //Shifts when necessary
+            while(position > 0 && tempValue < list.get(position - 1).getYear()) {
+                list.set(position, list.get(position - 1));
+                position--;
             }
-            tempSongs.set(minIndex, tempSongs.set(i, tempSongs.get(minIndex)));
+            list.set(position, tempSong);
         }
-        displaySongs(tempSongs);
+        displaySongs(list);
     }
 
-    public void sortYearReversed(ArrayList<Song> tempSongs) {
-        for(int i = 0; i < tempSongs.size() - 1; i++) {
-            int minIndex = i;
-            for(int j = i + 1; j < tempSongs.size(); j++) {
-                if(tempSongs.get(minIndex).getYear() < tempSongs.get(j).getYear()) {
-                    minIndex = j;
-                }
+    public void sortYearReversed(ArrayList<Song> list) {
+        for(int i = 1; i < list.size(); i++) {
+            //Saves element value so it can be placed back after shifting.
+            int tempValue = list.get(i).getYear();
+            Song tempSong = new Song(list.get(i).getName(), list.get(i).getBand(), list.get(i).getAlbum(),
+                    list.get(i).getYear(), list.get(i).getGenre(), list.get(i).getSongLength());
+            int position = i;
+            //Shifts when necessary
+            while(position > 0 && tempValue < list.get(position - 1).getYear()) {
+                list.set(position, list.get(position - 1));
+                position--;
             }
-            tempSongs.set(minIndex, tempSongs.set(i, tempSongs.get(minIndex)));
+            list.set(position, tempSong);
         }
-        displaySongs(tempSongs);
+        displaySongs(list);
     }
 
     public void searchGenre(Scanner scan) {
