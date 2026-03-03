@@ -157,8 +157,17 @@ public  class Playlist {
                                 temp.add(songs.get(i));
                             }
                         }
-                        displaySongs(temp);
+                        if(temp.isEmpty()) {
+                            System.out.println("No songs were found matching those qualities.");
+                        }
+                        else {
+                            displaySongs(temp);
+                        }
                     }
+                    else {
+                        System.out.println("No songs were found matching those qualities.");
+                    }
+                    isPossible = false;
                 }
 
             } catch (InputMismatchException e) {
