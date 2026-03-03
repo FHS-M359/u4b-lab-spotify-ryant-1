@@ -10,11 +10,14 @@ public class SpotifyTester {
         boolean validInput = false;
         int input = 0;
 
+        //Repeats giving the player instructions and letting them input a value
+        //Uses a try catch to prevent anything from crashing
         while(!validInput) {
             try {
                 p1.giveOptions();
                 input = scan.nextInt();
                 scan.nextLine();
+                //Makes sure the input fits qualifications.
                 if(input < 1 || input > 7) {
                     System.out.println("Invalid Input: Number wasn't within range of values");
                 } else if (input == 7) {
@@ -25,6 +28,7 @@ public class SpotifyTester {
                     p1.sendInput(input, scan);
                 }
             } catch (InputMismatchException e) {
+                //Prevents a crash due to inputting a string instead of a integer.
                 System.out.println("Invalid Input: Input an integer");
                 scan.nextLine();
             }

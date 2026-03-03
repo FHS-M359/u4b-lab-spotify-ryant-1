@@ -19,6 +19,7 @@ public  class Playlist {
         }
     }
 
+    //Takes the scanner and attempts to make an arraylist of songs using it.
     public void intitializePlaylist() {
         while(scan.hasNextLine()) {
             String temp = scan.nextLine();
@@ -27,6 +28,7 @@ public  class Playlist {
         }
     }
 
+    //Gives the options that the player can use to respond/retrieve information
     public void giveOptions() {
         System.out.println("==== Spotify Menu ====");
         System.out.println("1. Sort by Artist (A -> Z)");
@@ -39,6 +41,7 @@ public  class Playlist {
         System.out.println("Input (1-7)");
     }
 
+    //Takes the player input and uses it to decide what method to run.
     public void sendInput(int input, Scanner scan) {
         if(input == 1) {
             sortAlphabetic(songs);
@@ -60,6 +63,7 @@ public  class Playlist {
         }
     }
 
+    //Sorts the playlist arraylist in alphabetical order using selection sort
     public void sortAlphabetic(ArrayList<Song> tempSongs) {
         for(int i = 0; i < tempSongs.size() - 1; i++) {
             int minIndex = i;
@@ -73,6 +77,7 @@ public  class Playlist {
         displaySongs(tempSongs);
     }
 
+    //Sorts the playlist arraylist in reverse alphabetical order using selection sort
     public void sortAlphabeticReversed(ArrayList<Song> tempSongs) {
         for(int i = 0; i < tempSongs.size() - 1; i++) {
             int minIndex = i;
@@ -86,6 +91,7 @@ public  class Playlist {
         displaySongs(tempSongs);
     }
 
+    //Sorts the playlist arraylist based on how old/new a song is using insertion sort
     public void sortYear(ArrayList<Song> list) {
         for(int i = 1; i < list.size(); i++) {
             //Saves element value so it can be placed back after shifting.
@@ -103,6 +109,7 @@ public  class Playlist {
         displaySongs(list);
     }
 
+    //Sorts the playlist arraylist based on how old/new a song is using insertion sort
     public void sortYearReversed(ArrayList<Song> list) {
         for(int i = 1; i < list.size(); i++) {
             //Saves element value so it can be placed back after shifting.
@@ -120,6 +127,9 @@ public  class Playlist {
         displaySongs(list);
     }
 
+    //Searches for the inputted user genre
+    //prevents crashes by using a try catch block
+    //repeats until the player inputs an invalid input/quits
     public void searchGenre(Scanner scan) {
         boolean isValid = false;
         boolean isPossible = false;
@@ -157,6 +167,7 @@ public  class Playlist {
         }
     }
 
+    //Outputs the input arraylist in a specific format so that it'll look identical every time.
     public void displaySongs(ArrayList<Song> tempSongs) {
         System.out.println(String.format("%-30s %-20s %-30s %-12s %-15s %-12s", "Song Name", "Band Name", "Album Name", "Year", "Genre", "Song Length"));
         System.out.println("///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");

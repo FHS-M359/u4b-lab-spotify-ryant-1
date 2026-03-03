@@ -7,6 +7,7 @@ public class Song {
     private String genre = "";
     private int songLength = 0;
 
+    //initializes the song.
     public Song(String name, String band, String album, int year, String genre, int songLength) {
         this.name = name;
         this.band = band;
@@ -16,6 +17,7 @@ public class Song {
         this.songLength = songLength;
     }
 
+    //Returns the song as a string
     public String toString() {
         return String.format("%-30s %-20s %-30s %-12d %-15s %-12d", name, band, album, year, genre, songLength);
     }
